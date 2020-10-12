@@ -1,9 +1,9 @@
-var browserify = require('browserify');
+var browserify = require("browserify");
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const fs   = require( 'fs' );
+const fs = require("fs");
 var d3 = require("d3");
 
 //allows body-parser to extract data from the form element
@@ -21,10 +21,14 @@ const expressSession = require("express-session")({
   saveUninitialized: false
 });
 
-
 app.use(expressSession);
 app.use(express.static("public"));
 app.use(express.static("./"));
+
+app.get("/", function(req, res) {
+  console.log("this does print ");
+  res.send("index.html");
+});
 
 /*
 const fireReadData = fs.readFileSync('public/data/boston_fire_departments.json','utf8')
@@ -47,10 +51,7 @@ const map= JSON.parse(mapReadData)
     });
 
     //get methods
-    app.get("/", function(req, res) {
-      console.log("this does print ")
-      res.send(map.html);
-    });
+    
 
     app.get("/fire", function(req, res) {
         res.send(fire);
@@ -80,7 +81,7 @@ const map= JSON.parse(mapReadData)
     });
 */
 //initializing the server
-var server = app.listen(3002, function() {
+var server = app.listen(3000, function() {
   var host = server.address().address;
   var port = server.address().port;
 

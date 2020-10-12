@@ -29,3 +29,7 @@ h2 {
 .schools{
     fill: rgb(144, 243, 157);
 }
+
+canvas{
+  float:right;
+}
